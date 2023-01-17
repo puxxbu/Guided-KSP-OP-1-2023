@@ -6,6 +6,7 @@ package control;
 
 import java.util.List;
 import dao.StaffDAO;
+import java.util.ArrayList;
 import model.Staff;
 
 
@@ -54,6 +55,15 @@ public class StaffControl {
         sDAO.makeConnection();
         sDAO.deleteStaff(noStaff);
         sDAO.closeConnection();
+    }
+    
+    public ArrayList<Staff> showTable(){
+        sDAO.makeConnection();
+        ArrayList<Staff> list = sDAO.staffList();
+        sDAO.closeConnection();
+        return list;
+        
+        
     }
     
 }

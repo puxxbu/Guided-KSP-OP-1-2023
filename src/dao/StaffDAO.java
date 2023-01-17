@@ -16,7 +16,7 @@ import java.util.List;
 public class StaffDAO {
     public static Connection CON;
     public static final String URL = "jdbc:mysql://";
-    public static final String PATH = "localhost:3306/ksp-0606";
+    public static final String PATH = "localhost:3306/ksp_xxxx";
     
     public void makeConnection(){
         System.out.println("Opening Database.....");
@@ -82,6 +82,32 @@ public class StaffDAO {
             System.out.println(e);
         }
         return list;
+        
+    }
+    
+    public ArrayList<Staff> staffList(){
+        ArrayList<Staff> staffsList = new ArrayList<>();
+        String sql = "select * from staff";
+        try {
+            Statement statement = CON.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            
+            if (rs!=null) {
+                while (rs.next()) {                
+                    Staff s = new Staff(rs.getString("noStaff"), rs.getString("nama"), 
+                            Integer.parseInt(rs.getString("jamKerja")), rs.getString("jenisKelamin"));
+                    staffsList.add(s);
+                    
+                }
+            }
+            rs.close();
+            statement.close();
+        } catch (Exception e) {
+            System.out.println("Error reading database...");
+            System.out.println(e);
+        }
+        return staffsList;
+        
         
     }
     
