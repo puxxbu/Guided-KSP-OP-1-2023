@@ -57,13 +57,13 @@ public class StaffControl {
         sDAO.closeConnection();
     }
     
-    public ArrayList<Staff> showTable(){
-        sDAO.makeConnection();
-        ArrayList<Staff> list = sDAO.staffList();
-        sDAO.closeConnection();
-        return list;
-        
-        
-    }
+//    public ArrayList<Staff> showTable(){
+//        sDAO.makeConnection();
+//        ArrayList<Staff> list = sDAO.staffList();
+//        sDAO.closeConnection();
+//        return list;
+//        
+//        
+//    }
     
 }
